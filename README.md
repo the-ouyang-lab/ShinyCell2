@@ -47,31 +47,31 @@ This readme is broken down into the following sections:
 There are also additional information / tutorials as follows:
 
 - [Additional information on new visualisations tailored for spatial / scATAC-seq / multiomics](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/addNewVis.html)
 
 - [Additional information on enhanced visualisation features](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/addEnhanVis.html)
 
 - [Tutorial for creating a ShinyCell2 app for scRNA-seq or CITE-seq data](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutCiteseq.html)
 
 - [Tutorial for creating a ShinyCell2 app for spatial data](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutSpatial.html)
 
 - [Tutorial for creating a ShinyCell2 app for ArchR-based scATAC-seq data](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutArchr.html)
 
 - [Tutorial for creating a ShinyCell2 app for Signac-based scATAC-seq data](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutSignac.html)
 
 - [Tutorial for creating a ShinyCell app containing several sdatasets](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/2multi.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutMulti.html)
 
 - [Tutorial for customising ShinyCell aesthetics](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/aesthetics.html)
 
 - [Instructions on how to deploy ShinyCell apps online](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/4cloud.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/cloud.html)
 
 
 
@@ -151,7 +151,7 @@ A shiny app can be readily generated using the following code:
  
 ``` r
 library(Seurat)
-library(ShinyCell)
+library(ShinyCell2)
 
 seu <- readRDS("multimodal_pbmc.rds")
 scConf <- createConfig(seu)
@@ -167,13 +167,13 @@ right corner. The shiny app can also be deployed online via online platforms
 e.g. [shinyapps.io](https://www.shinyapps.io/) and Amazon Web Services (AWS) 
 or be hosted via Shiny Server. For further details, refer to 
 [Instructions on how to deploy ShinyCell apps online](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/4cloud.html).
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/cloud.html).
 
 More details on the various visualisations in the `ShinyCell2` can be found in
 [Additional information on new visualisations tailored for spatial / scATAC-seq / multiomics](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/addNewVis.html)
 and [Additional information on enhanced visualisation features](
-https://htmlpreview.github.io/?https://github.com/SGDDNB/ShinyCell/blob/master/docs/1aesthetics.html)
+https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/addEnhanVis.html)
 
 
 
