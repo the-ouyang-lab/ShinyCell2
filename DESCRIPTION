@@ -1,0 +1,27 @@
+Package: ShinyCell2
+Type: Package
+Title: ShinyCell2: Simple and sharable visualisation of spatial, peak-based and multi-omic single-cell data
+Version: 1.0.0
+Author: Beijun Chen and John F. Ouyang
+Maintainer: John F. Ouyang <john.f.ouyang@gmail.com>
+Description: ShinyCell2: An extended library for simple and sharable visualisation of spatial, peak-based and multi-omic single-cell data
+License: GPL-3
+Suggests:
+  Seurat       (>= 5.0.0),
+  Signac       (>= 1.12.0),
+  ArchR        (>= 1.0.1)  
+Depends:
+  data.table   (>= 1.14.8),
+  Matrix       (>= 1.5.3),
+  hdf5r        (>= 1.3.8),
+  reticulate   (>= 1.28),
+  R.utils      (>= 2.12.2),
+  ggplot2      (>= 3.4.1),
+  grid                   ,
+  gridExtra    (>= 2.3),
+  glue         (>= 1.6.2),
+  readr        (>= 2.1.4),
+  future       (>= 1.32.0),
+  RColorBrewer (>= 1.1-3)
+Encoding: UTF-8
+RoxygenNote: 7.3.2

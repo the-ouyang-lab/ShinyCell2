@@ -32,6 +32,20 @@ plots.
 - Easily extendable, with support for user-defined visualizations through R for 
 tailored analysis workflows.
 
+We also compared `ShinyCell2` with other popular single cell data visualisation 
+tools, which further highlights the key features of `ShinyCell2`.
+
+| Feature                    | cellxgene                               | Vitessce                              | WebAtlas                              | ShinyCell2                            |
+|:---------------------------|:---------------------------------------:|:-------------------------------------:|:-------------------------------------:|:-------------------------------------:|
+| Framework                  | JavaScript/Python/R                     | JavaScript/Python/R                   | Vitessce-based                        | R/Shiny                               |
+| Spatial data support       | <span style="color:red;">limited</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> |
+| Multi-omics integration    | <span style="color:red;">limited</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> |
+| Cross-model queries        | <span style="color:red;">limited</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> | <span style="color:green;">yes</span> |
+| Configuration Complexity   | low, via command line                   | high, via multiple joson files        | low, via parameter file               | low, via config object                |
+| Customisation              | limited                                 | extensive but req. expertise          | limited                               | extensive and user-friendly           |
+| R/Bioconductor Integration | via cellxgenedp package                 | via vitessceR package                 | <span style="color:red;">no</span>    | <span style="color:green;">full</span> |
+| Deployment                 | primarily web-based                     | primarily web-based                   | primarily web-based                   | local and web-based                   |
+| Local Deployment           | yes via R                               | local http server                     | local http server                     | yes, via Rstudio / Rstudio server     |
 
 
 # Table of Contents and Additional Information / Tutorials
@@ -64,7 +78,7 @@ https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tuto
 - [Tutorial for creating a ShinyCell2 app for Signac-based scATAC-seq data](
 https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutSignac.html)
 
-- [Tutorial for creating a ShinyCell app containing several sdatasets](
+- [Tutorial for creating a ShinyCell app containing several datasets](
 https://htmlpreview.github.io/?https://github.com/the-ouyang-lab/ShinyCell2-tutorial/master/docs/tutMulti.html)
 
 - [Tutorial for customising ShinyCell aesthetics](
@@ -201,5 +215,43 @@ which gene expression assay to plot in the Shiny app?
        within a single `ShinyCell2` app. Thus, both the RNA and integrated data 
        will be incorporated and users can choose to visualise either assays or 
        even compare their expression in the `ShinyCell2` app.
+
+- Q: What types of single-cell data can ShinyCell2 handle?
+  - A: ShinyCell2 supports various multi-omics formats including CITE-seq, 
+       scATAC-seq, and both standard and spatial scRNA-seq data. It can 
+       seamlessly switch between different data modalities such as RNA 
+       expression and protein abundance.
+
+- Q: How does ShinyCell2 improve upon its predecessor?
+  - A: ShinyCell2 introduces enhanced features for multi-assay visualisation, 
+       improved plotting capabilities, and advanced analysis tools. It offers 
+       better UMAP visualisation with zooming, flexible data ordering, 
+       customisable colour scales, and integrated statistical analysis tools.
+
+- Q: Can I deploy ShinyCell2 apps locally and on the web?
+  - A: Yes, ShinyCell2 apps can be run locally using RStudio and can also be 
+       deployed online via platforms like shinyapps.io and Amazon Web Services 
+       (AWS), or hosted via Shiny Server.
+
+- Q: What are the main visualisation features of ShinyCell2?
+  - A: ShinyCell2 offers six common tabs: Zoom-enable DimRed, Side-by-side 
+       DimRed, Gene coexpression, Violinplot/Boxplot, Proportional plot, and 
+       Bubbleplot/Heatmap. It also has specific tabs for spatial data and 
+       scATAC-seq data.
+
+- Q: How does ShinyCell2 handle spatial transcriptomics data?
+  - A: ShinyCell2 provides two spatial-specific tabs: "Zoom-enable Spatial" and 
+       "Side-by-side Spatial", allowing users to visualise cell information or 
+       gene expression overlaid on tissue images with zooming capabilities.
+
+- Q: What special features does ShinyCell2 offer for scATAC-seq data?
+  - A: For scATAC-seq data, ShinyCell2 offers a "Track plot" feature to 
+       visualise open chromatin regions. It supports custom annotations (in 
+       .bed file) and flexible region selection by gene or chromosomal region.
+
+- Q: How does ShinyCell2 compare to other single-cell visualisation tools?
+  - A: Compared to tools like cellxgene and Vitessce, ShinyCell2 offers more 
+       extensive customisation options, full R/Bioconductor integration, and a 
+       user-friendly interface with low configuration complexity.
 
 
