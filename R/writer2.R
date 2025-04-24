@@ -36,7 +36,7 @@ wrUIload <- function(prefix) {
 wrUIloadT1 <- function(prefix) {
   glue::glue(
     '{prefix}bw    = readRDS("./{prefix}bw.rds")\n',
-    '{prefix}bwGrp = tstrsplit(dir(pattern = "{prefix}bw_"), "_")[[2]]\n',
+    '{prefix}bwGrp = gsub("{prefix}bw_", "", dir(pattern = "{prefix}bw_"))\n',
     '\n'
   )
 }
