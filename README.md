@@ -14,8 +14,9 @@ high-dimensional data without requiring extensive coding or setup. An example
 web app showcasing the visualization of spatial transcriptomics, scATAC-seq, 
 and CITE-seq datasets can be accessed at https://shinycell.ouyanglab.com/
 
-If you are using `ShinyCell2`, please cite the biorxiv preprint. The manuscript 
-is currently under review.
+If you are using `ShinyCell2`, please cite the [biorxiv preprint](
+https://www.biorxiv.org/content/10.1101/2025.04.22.650045v1). 
+The manuscript is currently under review.
 
 Key features of `ShinyCell2` include:
 
