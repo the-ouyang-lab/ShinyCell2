@@ -29,6 +29,8 @@
 #'   use all except LSI 
 #' @param shiny.prefix specify file prefix 
 #' @param shiny.dir specify directory to create the shiny app in
+#' @param Genome assembly used for annotation. Must be one of: hg19, hg38, mm10, mm9
+#' @param chrom_assay_name Name of chromatin assay (Signac)
 #' @param default.gene1 specify primary default feature (peak or gene or TF) 
 #'   to show, which must be present in the default assay
 #' @param default.gene2 specify secondary default feature (peak or gene or TF) 
@@ -43,15 +45,25 @@
 #'
 #' @author John F. Ouyang
 #'
-#' @import data.table hdf5r reticulate
-#'
+#' @import data.table hdf5r reticulate 
+#' @importFrom IRanges IRanges start end
+#' @importFrom GenomicRanges GRanges slidingWindows mcols seqnames
+#' @importClassesFrom IRanges IRanges
+#' @importClassesFrom GenomicRanges GRanges
+#' 
 #' @examples
 #' makeShinyFilesATACsignac(sig, scConf, 
 #'                          shiny.prefix = "sc1", shiny.dir = "shinyApp/")
 #'
 #' @export
 makeShinyFilesATACsignac <- function(
-  obj, scConf, bigWigGroup, shiny.prefix = "sc1", shiny.dir = "shinyApp/"){
+  obj, scConf, bigWigGroup, shiny.prefix = "sc1", shiny.dir = "shinyApp/", genome, chrom_assay_name){
+
+  # Check where the seqinfo is stored and copy if necessary
+  if (is.null(obj@assays[[chrom_assay_name]]@seqinfo)){
+      obj@assays[[chrom_assay_name]]@seqinfo <- obj@assays[[chrom_assay_name]]@annotation@seqinfo
+  }
+    
   # Make individual bigwig files
   sc1conf = scConf
   for(iGrp in bigWigGroup){
@@ -60,7 +72,7 @@ makeShinyFilesATACsignac <- function(
         dir.create(paste0(shiny.dir,"/",shiny.prefix,"bw_",iGrp))
       }
       ExportGroupBW(
-        obj, assay = 'peaks', group.by = iGrp,
+        obj, assay = chrom_assay_name, group.by = iGrp,
         idents = NULL, normMethod = "RC",              # defaults
         tileSize = 100, minCells = 5, cutoff = NULL,   # defaults
         chromosome = GenomeInfoDb::standardChromosomes(obj),
@@ -80,17 +92,19 @@ makeShinyFilesATACsignac <- function(
     }
   }
   # Copy over gtf
-  scGenome <- obj@assays[["peaks"]]@annotation@seqinfo@genome[1]
+  scGenome <- genome
+  # scGenome <- obj@assays[["peaks"]]@annotation@seqinfo@genome[1]
   # scGenome <- unlist(strsplit(getGenome(obj), "\\."))
   # scGenome <- scGenome[grepl("hg|mm", scGenome)]
   srcPath <- system.file("extdata", paste0(scGenome,".refGene.gtf.gz"), package = "ShinyCell2")
   tarPath <- paste0(shiny.dir,"/",shiny.prefix,"bw.gtf.gz")
   file.copy(srcPath, tarPath)
+
   # Generate geneIndex and chrom.sizes
-  chrSize <- data.table(chr = as.character(seqnames(obj@assays[["peaks"]]@seqinfo)), 
-                        size = as.numeric(seqlengths(obj@assays[["peaks"]]@seqinfo)))
-  chrSize <- chrSize[chr %in% standardChromosomes(obj)]
-  chrGene <- obj@assays[["peaks"]]@annotation
+  chrSize <- data.table(chr = as.character(seqnames(obj@assays[[chrom_assay_name]]@seqinfo)), 
+                        size = as.numeric(seqlengths(obj@assays[[chrom_assay_name]]@seqinfo)))
+  chrSize <- chrSize[chr %in% GenomeInfoDb::standardChromosomes(obj)]
+  chrGene <- obj@assays[[chrom_assay_name]]@annotation
   chrGene <- data.table(gene = chrGene$gene_name,
                         chr = as.character(seqnames(chrGene)), 
                         srt = start(chrGene),
