@@ -9,7 +9,9 @@ makeShinyFilesATACsignac(
   scConf,
   bigWigGroup,
   shiny.prefix = "sc1",
-  shiny.dir = "shinyApp/"
+  shiny.dir = "shinyApp/",
+  genome,
+  chrom_assay_name
 )
 }
 \arguments{
@@ -25,6 +27,8 @@ not generate any bigWig files.}
 
 \item{shiny.dir}{specify directory to create the shiny app in}
 
+\item{chrom_assay_name}{Name of chromatin assay (Signac)}
+
 \item{assay}{assay(s) in ArhcR object to use. Multiple assays can now be 
 incorporated and all assays are used by default (with the first assay 
 being the default assay), which must match one of the following:
@@ -36,6 +40,8 @@ being the default assay), which must match one of the following:
 
 \item{dimred.to.use}{specify the dimension reduction to use. Default is to 
 use all except LSI}
+
+\item{Genome}{assembly used for annotation. Must be one of: hg19, hg38, mm10, mm9}
 
 \item{default.gene1}{specify primary default feature (peak or gene or TF) 
 to show, which must be present in the default assay}
