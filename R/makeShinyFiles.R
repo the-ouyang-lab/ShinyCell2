@@ -18,6 +18,8 @@
 #'     \item{h5ad files}: "X" or any assay in "layers",
 #'       default is "X"
 #'   }
+#' @param chrom_assay_name Name of chromatin assay (Signac)
+#' @param genome Genome assembly used for annotation. Must be one of: hg19, hg38, mm10, mm9
 #' @param assay.slot slot in single-cell assay to plot. This is only used 
 #'   for Seurat objects (v3+). Default is to use the "data" slot
 #' @param dimred.to.use specify the dimension reduction to use. Default is to 
@@ -40,7 +42,7 @@
 #'
 #' @author John F. Ouyang
 #'
-#' @import data.table hdf5r reticulate hdf5r
+#' @import data.table hdf5r reticulate hdf5r 
 #'
 #' @examples
 #' makeShinyFiles(seu, scConf, shiny.prefix = "sc1", shiny.dir = "shinyApp/",
@@ -51,7 +53,7 @@
 #' @export
 makeShinyFiles <- function(
     obj, scConf, bigWigGroup = NA, 
-    assay = NA, assay.slot = "data", dimred.to.use = NA,
+    assay = NA, chrom_assay_name = NA, genome, assay.slot = "data", dimred.to.use = NA,
     shiny.prefix = "sc1", shiny.dir = "shinyApp/",
     default.gene1 = NA, default.gene2 = NA, default.multigene = NA, 
     default.dimred = NA, chunkSize = 500, ...){
@@ -71,10 +73,10 @@ makeShinyFiles <- function(
       }
     }
     # Signac object with fragment data
-    if("peaks" %in% names(obj@assays)){
+    if(!is.na(chrom_assay_name)){
       if(!is.na(bigWigGroup[1])){
         makeShinyFilesATACsignac(
-          obj, scConf, bigWigGroup, shiny.prefix, shiny.dir)
+          obj, scConf, bigWigGroup, shiny.prefix, shiny.dir, genome, chrom_assay_name)
       }
     }
 

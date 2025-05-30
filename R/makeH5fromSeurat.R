@@ -41,13 +41,13 @@ makeH5fromSeurat <- function(obj, sc1meta, filename,
     # Seurat v5
     for(i in 1:nChunk){
       sc1gexpr.grp.data[((i-1)*chk+1):(i*chk), ] <- as.matrix(
-        obj@assays[[gex.assay]]@layers[[gex.slot]][
+        obj[[gex.assay]][gex.slot][
           ((i-1)*chk+1):(i*chk), sc1meta$cellID])
     }
       sc1gexpr.grp.data[(i*chk+1):gex.matdim[1], ] <- as.matrix(
-        obj@assays[[gex.assay]]@layers[[gex.slot]][
+        obj[[gex.assay]][gex.slot][
           (i*chk+1):gex.matdim[1], sc1meta$cellID])
-      gex.rownm = rownames(obj@assays[[gex.assay]]@layers[[gex.slot]])
+      gex.rownm = rownames(obj[[gex.assay]][gex.slot])
       
   } else {
     for(i in 1:nChunk){

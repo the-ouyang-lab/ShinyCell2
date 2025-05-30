@@ -9,6 +9,8 @@ makeShinyFiles(
   scConf,
   bigWigGroup = NA,
   assay = NA,
+  chrom_assay_name = NA,
+  genome,
   assay.slot = "data",
   dimred.to.use = NA,
   shiny.prefix = "sc1",
@@ -39,6 +41,10 @@ assay being the default assay), which must match one of the following:
   \item{h5ad files}: "X" or any assay in "layers",
     default is "X"
 }}
+
+\item{chrom_assay_name}{Name of chromatin assay (Signac)}
+
+\item{genome}{Genome assembly used for annotation. Must be one of: hg19, hg38, mm10, mm9}
 
 \item{assay.slot}{slot in single-cell assay to plot. This is only used 
 for Seurat objects (v3+). Default is to use the "data" slot}
