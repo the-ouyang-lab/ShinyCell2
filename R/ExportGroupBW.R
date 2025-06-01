@@ -1,6 +1,6 @@
 ExportGroupBW  <- function(
     object,
-    assay = NULL,
+    assay,
     group.by = NULL,
     idents = NULL,
     normMethod = "RC",
@@ -19,7 +19,7 @@ ExportGroupBW  <- function(
     message("Please install rtracklayer. http://www.bioconductor.org/packages/rtracklayer/") 
     return(NULL) 
   }
-  assay <- SetIfNull(x = assay, y = DefaultAssay(object = object))
+    
   DefaultAssay(object = object) <- assay
   group.by <- SetIfNull(x = group.by, y = 'ident')
   Idents(object = object) <- group.by
